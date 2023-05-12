@@ -4,51 +4,55 @@ import type { UploadProps } from "antd";
 import { message, Upload } from "antd";
 import { JSONData } from "./validators/expected_json";
 import TableSamples from "./components/TableSamples";
+import { useState } from "react";
 
 const { Dragger } = Upload;
 
-const props: UploadProps = {
-  name: "file",
-  action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
-  accept: ".json",
-  maxCount: 1,
-  beforeUpload(file) {
-    //convert retrieved file to text and read it
-    const reader = new FileReader();
-
-    reader.readAsText(file);
-    reader.onload = () => {
-      try {
-        //check if file is json
-        const json: JSONData = JSON.parse(reader.result as string);
-        console.log("Projects", json.Project);
-        console.log("TestPoints", json.TestPointCollections);
-      } catch (err) {
-        console.log(err);
-        message.error("File is not a JSON file");
-        return false;
-      }
-    };
-
-    return false; //PREVENTS UPLOAD
-  },
-  onChange(info) {
-    const { status } = info.file;
-    if (status !== "uploading") {
-      console.log(info.file, info.fileList);
-    }
-    if (status === "done") {
-      message.success(`${info.file.name} file uploaded successfully.`);
-    } else if (status === "error") {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-  },
-  onDrop(e) {
-    console.log("Dropped files", e.dataTransfer.files);
-  },
-};
-
 function App() {
+  const [jsonData, setJsonData] = useState<JSONData | null>(null);
+
+  const props: UploadProps = {
+    name: "file",
+    action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
+    accept: ".json",
+    maxCount: 1,
+    beforeUpload(file) {
+      //convert retrieved file to text and read it
+      const reader = new FileReader();
+
+      reader.readAsText(file);
+      reader.onload = () => {
+        try {
+          //check if file is json
+          const json: JSONData = JSON.parse(reader.result as string);
+          setJsonData(json);
+          console.log("Projects", json.Project);
+          console.log("TestPoints", json.TestPointCollections);
+        } catch (err) {
+          console.log(err);
+          message.error("File is not a JSON file");
+          return false;
+        }
+      };
+
+      return false; //PREVENTS UPLOAD
+    },
+    onChange(info) {
+      const { status } = info.file;
+      if (status !== "uploading") {
+        console.log(info.file, info.fileList);
+      }
+      if (status === "done") {
+        message.success(`${info.file.name} file uploaded successfully.`);
+      } else if (status === "error") {
+        message.error(`${info.file.name} file upload failed.`);
+      }
+    },
+    onDrop(e) {
+      console.log("Dropped files", e.dataTransfer.files);
+    },
+  };
+
   return (
     <>
       <Dragger {...props}>
@@ -63,7 +67,7 @@ function App() {
           uploading company data or other banned files.
         </p>
       </Dragger>
-      <TableSamples />
+      {jsonData && <TableSamples data={jsonData.Project.Samples} />}
     </>
   );
 }

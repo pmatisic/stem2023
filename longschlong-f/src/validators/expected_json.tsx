@@ -3,7 +3,7 @@ interface TestPoint {
   Unit: string;
 }
 
-interface Sample {
+export interface Sample {
   FamilyName: string;
   ProductName: string;
   Name: string;
