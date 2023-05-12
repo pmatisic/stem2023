@@ -3,7 +3,7 @@ interface TestPoint {
   Unit: string;
 }
 
-interface Sample {
+export interface Sample {
   FamilyName: string;
   ProductName: string;
   Name: string;
@@ -26,7 +26,7 @@ interface Project {
   Id: number;
 }
 
-interface TestPointCollection {
+export interface TestPointCollection {
   InputConditionId: number;
   SampleIds: number[];
   TestPoints: TestPoint[];
@@ -36,18 +36,4 @@ interface TestPointCollection {
 export interface JSONData {
   Project: Project;
   TestPointCollections: TestPointCollection[];
-}
-
-export function parseFile(
-  file: any
-): { project: Project; testPointCollections: TestPointCollection[] } | null {
-  try {
-    const jsonData: JSONData = JSON.parse(file);
-    const { Project, TestPointCollections } = jsonData;
-
-    return { project: Project, testPointCollections: TestPointCollections };
-  } catch (error) {
-    console.error("Invalid JSON file:", error);
-    return null;
-  }
 }
