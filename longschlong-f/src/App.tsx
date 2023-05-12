@@ -3,7 +3,6 @@ import { InboxOutlined } from "@ant-design/icons";
 import type { UploadProps } from "antd";
 import { message, Upload } from "antd";
 import { JSONData } from "./validators/expected_json";
-import TableSamples from "./components/TableSamples";
 import { useState } from "react";
 import TableTestPointCollections from "./components/TableTestPointCollections";
 
