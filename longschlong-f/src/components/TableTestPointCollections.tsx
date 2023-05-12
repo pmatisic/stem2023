@@ -1,6 +1,7 @@
 import React from "react";
 import { Table, Tag } from "antd";
 import { JSONData } from "../validators/expected_json";
+import FooterGenerateCSV from "./FooterGenerateCSV";
 
 const { Column, ColumnGroup } = Table;
 
@@ -14,7 +15,10 @@ const TableTestPointCollections: React.FC<TableTestPointCollectionsProps> = ({
   console.log(data);
   return (
     <div className="centered-div">
-      <Table dataSource={data.TestPointCollections}>
+      <Table
+        dataSource={data.TestPointCollections}
+        footer={() => <FooterGenerateCSV data={data} />}
+      >
         <ColumnGroup title="Tast point collections">
           <Column title="Id" dataIndex="Id" key="id" />
           <Column

@@ -13,7 +13,7 @@ function App() {
 
   const props: UploadProps = {
     name: "file",
-    action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
+    action: "https://localhost:8080/",
     accept: ".json",
     maxCount: 1,
     beforeUpload(file) {
