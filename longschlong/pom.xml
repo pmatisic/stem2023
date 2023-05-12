@@ -10,10 +10,10 @@
 	</parent>
 	<groupId>org.foi.stem</groupId>
 	<artifactId>longschlong</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>war</packaging>
 	<name>longschlong</name>
-	<description>Demo project for Spring Boot</description>
+	<description>STEM Games 2023</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
