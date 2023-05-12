@@ -68,7 +68,6 @@ function App() {
           uploading company data or other banned files.
         </p>
       </Dragger>
-      {jsonData && <TableSamples data={jsonData.Project.Samples} />}
       {jsonData && <TableTestPointCollections data={jsonData} />}
     </>
   );
