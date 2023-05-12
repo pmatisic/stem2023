@@ -18,7 +18,7 @@ public class TestVectorService {
   }
 
   public TestVector findById(Integer id) {
-    return (TestVector) testVectorRepository.findById(id).orElse(null);
+    return testVectorRepository.findById(id).orElse(null);
   }
 
   public TestVector save(TestVector testVector) {

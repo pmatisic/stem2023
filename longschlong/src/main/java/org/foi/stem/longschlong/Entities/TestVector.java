@@ -3,6 +3,7 @@ package org.foi.stem.longschlong.Entities;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "testvectors", schema = "public", catalog = "postgres")
 public class TestVector {
 
   @Id
@@ -16,15 +17,14 @@ public class TestVector {
   public TestVector() {
   }
 
-  public TestVector(int index, float temperature, float humidity, float input_voltage, float frequency) {
+  public TestVector(int index, float temperature, float humidity, float input_voltage,
+      float frequency) {
     this.index = index;
     this.temperature = temperature;
     this.humidity = humidity;
     this.input_voltage = input_voltage;
     this.frequency = frequency;
   }
-
-  // Getters and setters for all fields
 
   public int getIndex() {
     return index;

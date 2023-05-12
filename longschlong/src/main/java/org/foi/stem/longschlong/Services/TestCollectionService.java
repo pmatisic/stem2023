@@ -18,7 +18,7 @@ public class TestCollectionService {
   }
 
   public TestCollection findById(Integer id) {
-    return (TestCollection) testCollectionRepository.findById(id).orElse(null);
+    return testCollectionRepository.findById(id).orElse(null);
   }
 
   public TestCollection save(TestCollection testCollection) {

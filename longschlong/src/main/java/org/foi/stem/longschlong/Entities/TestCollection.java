@@ -1,8 +1,10 @@
 package org.foi.stem.longschlong.Entities;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Type;
 
 @Entity
+@Table (name = "testcollections", schema = "public", catalog = "postgres")
 public class TestCollection {
 
   @Id
@@ -11,8 +13,9 @@ public class TestCollection {
   private int input_condition_id;
   private int sample_id;
 
-  @Column(columnDefinition = "jsonb")
-  private Float[] test_points;
+  @Column(name = "test_points", columnDefinition = "float[]")
+  @Type(type = "com.vladmihalcea.hibernate.type.array.FloatArrayType")
+  private Float[] testPoints;
 
   public TestCollection() {
   }
@@ -23,8 +26,6 @@ public class TestCollection {
     this.sample_id = sample_id;
     this.test_points = test_points;
   }
-
-  // Getters and setters for all fields
 
   public int getId() {
     return id;
@@ -50,7 +51,7 @@ public class TestCollection {
     this.sample_id = sample_id;
   }
 
-  public Float[] getTest_points() {
+  public Object getTest_points() {
     return test_points;
   }
 

@@ -1,11 +1,9 @@
 package org.foi.stem.longschlong.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table (name = "conditions", schema = "public", catalog = "postgres")
 public class Condition {
 
   @Id
@@ -19,15 +17,14 @@ public class Condition {
   public Condition() {
   }
 
-  public Condition(int id, String parameter, float minimum, float maximum, float time_between_points) {
+  public Condition(int id, String parameter, float minimum, float maximum,
+      float time_between_points) {
     this.id = id;
     this.parameter = parameter;
     this.minimum = minimum;
     this.maximum = maximum;
     this.time_between_points = time_between_points;
   }
-
-  // Getters and setters for all fields
 
   public int getId() {
     return id;

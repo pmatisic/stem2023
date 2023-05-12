@@ -18,7 +18,7 @@ public class SampleService {
   }
 
   public Sample findById(Integer id) {
-    return (Sample) sampleRepository.findById(id).orElse(null);
+    return sampleRepository.findById(id).orElse(null);
   }
 
   public Sample save(Sample sample) {

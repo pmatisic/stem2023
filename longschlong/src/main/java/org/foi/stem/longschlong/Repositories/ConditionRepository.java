@@ -8,7 +8,7 @@ import java.util.Optional;
 
 @Repository
 public interface ConditionRepository extends JpaRepository<Condition, Integer> {
-  Optional<Object> findById(Integer id);
+  Optional<Condition> findById(Integer id);
 
   Condition save(Condition condition);
 

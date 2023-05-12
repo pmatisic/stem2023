@@ -8,4 +8,9 @@ import java.util.Optional;
 
 @Repository
 public interface SampleRepository extends JpaRepository<Sample, Integer> {
+  Optional<Sample> findById(Integer id);
+
+  Sample save(Sample sample);
+
+  void deleteById(Integer id);
 }

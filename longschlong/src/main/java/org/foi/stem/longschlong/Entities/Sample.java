@@ -1,11 +1,9 @@
 package org.foi.stem.longschlong.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "samples", schema = "public", catalog = "postgres")
 public class Sample {
 
   @Id
@@ -24,8 +22,6 @@ public class Sample {
     this.product_name = product_name;
     this.name = name;
   }
-
-  // Getters and setters for all fields
 
   public int getId() {
     return id;
