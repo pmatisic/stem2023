@@ -26,7 +26,7 @@ interface Project {
   Id: number;
 }
 
-interface TestPointCollection {
+export interface TestPointCollection {
   InputConditionId: number;
   SampleIds: number[];
   TestPoints: TestPoint[];
