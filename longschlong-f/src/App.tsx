@@ -3,6 +3,7 @@ import { InboxOutlined } from "@ant-design/icons";
 import type { UploadProps } from "antd";
 import { message, Upload } from "antd";
 import { JSONData } from "./validators/expected_json";
+import TableSamples from "./components/TableSamples";
 
 const { Dragger } = Upload;
 
@@ -62,6 +63,7 @@ function App() {
           uploading company data or other banned files.
         </p>
       </Dragger>
+      <TableSamples />
     </>
   );
 }

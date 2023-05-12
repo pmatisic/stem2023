@@ -37,17 +37,3 @@ export interface JSONData {
   Project: Project;
   TestPointCollections: TestPointCollection[];
 }
-
-export function parseFile(
-  file: any
-): { project: Project; testPointCollections: TestPointCollection[] } | null {
-  try {
-    const jsonData: JSONData = JSON.parse(file);
-    const { Project, TestPointCollections } = jsonData;
-
-    return { project: Project, testPointCollections: TestPointCollections };
-  } catch (error) {
-    console.error("Invalid JSON file:", error);
-    return null;
-  }
-}
